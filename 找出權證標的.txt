@@ -1,0 +1,26 @@
+Sub test()
+Count = 1
+
+Sheets("Sheet1").Select
+
+compare = Range("A1").Value
+
+For i = 1 To 20000
+tempcount = Application.WorksheetFunction.Text(Count, "0")
+tempi = Application.WorksheetFunction.Text(i, "0")
+tempa = "A" + tempi
+tempb = "B" + tempi
+tempd = "D" + tempcount
+tempe = "E" + tempcount
+
+
+If Range(tempa).Value <> compare Then
+Range(tempd).Value = Range(tempa).Value
+Range(tempe).Value = Range(tempb).Value
+
+compare = Range(tempa).Value
+Count = Count + 1
+End If
+
+Next i
+End Sub
